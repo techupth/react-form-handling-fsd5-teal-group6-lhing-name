@@ -1,4 +1,9 @@
+import { useState } from "react";
 function ProductForm() {
+  const [name, setName] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
   return (
     <form className="post-form">
       <h1>Create Product Form</h1>
@@ -10,7 +15,10 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            onChange={(eventName) => {
+              setName(eventName.target.value);
+            }}
+            value={name}
           />
         </label>
       </div>
@@ -22,7 +30,10 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            onChange={(eventImageURL) => {
+              setImageURL(eventImageURL.target.value);
+            }}
+            value={imageURL}
           />
         </label>
       </div>
@@ -34,7 +45,10 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            onChange={(eventPrice) => {
+              setPrice(eventPrice.target.value);
+            }}
+            value={price}
           />
         </label>
       </div>
@@ -46,14 +60,26 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            onChange={(eventDescription) => {
+              setDescription(eventDescription.target.value);
+            }}
+            value={description}
             rows={4}
             cols={30}
           />
         </label>
       </div>
       <div className="form-actions">
-        <button type="submit">Create</button>
+        <button
+          type="submit"
+          onClick={() => {
+            alert(
+              `name: ${name}, price: ${price}, image: ${imageURL}, description: ${description}`
+            );
+          }}
+        >
+          Create
+        </button>
       </div>
     </form>
   );
