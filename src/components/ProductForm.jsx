@@ -4,8 +4,14 @@ function ProductForm() {
   const [imageURL, setImageURL] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(
+      `name: ${name}, price: ${price}, image: ${imageURL}, description: ${description}`
+    );
+  };
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -70,16 +76,7 @@ function ProductForm() {
         </label>
       </div>
       <div className="form-actions">
-        <button
-          type="submit"
-          onClick={() => {
-            alert(
-              `name: ${name}, price: ${price}, image: ${imageURL}, description: ${description}`
-            );
-          }}
-        >
-          Create
-        </button>
+        <button type="submit">Create</button>
       </div>
     </form>
   );
